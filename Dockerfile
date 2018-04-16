@@ -1,16 +1,18 @@
 FROM ubuntu:16.04
 MAINTAINER chin@oberon.nl
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN sed 's/main$/main universe/' -i /etc/apt/sources.list
 
 RUN apt-get update
 RUN apt-get upgrade -y
 
 # Download and install wkhtmltopdf
-RUN apt-get install -y build-essential xorg libssl-dev libxrender-dev 
+RUN apt-get install -y build-essential xorg libssl-dev libxrender-dev wget
 
 # Install dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends xvfb libfontconfig wget
+RUN apt-get update && apt-get install -y --no-install-recommends xvfb libfontconfig 
 
 RUN wget --no-check-certificate https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
 RUN tar vxf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz 
