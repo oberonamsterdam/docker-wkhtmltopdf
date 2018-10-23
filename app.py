@@ -27,7 +27,7 @@ def application(request):
     request_is_json = request.content_type.endswith('json')
 
     with tempfile.NamedTemporaryFile(suffix='.html') as source_file:
-
+        options={}
         if request_is_json:
             # If a JSON payload is there, all data is in the payload
             payload = json.loads(request.data)
