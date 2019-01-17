@@ -22,7 +22,8 @@ RUN rm wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
 
 # Install dependencies for running web service
 RUN apt-get install -y python-pip
-RUN pip install werkzeug executor gunicorn gunicorn[eventlet] gunicorn[gevent] gunicorn[tornado]
+RUN pip install werkzeug executor gunicorn
+RUN pip install gunicorn[eventlet] gunicorn[gevent] gunicorn[tornado]
 
 ADD app.py /app.py
 
