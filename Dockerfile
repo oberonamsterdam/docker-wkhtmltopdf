@@ -12,18 +12,16 @@ RUN apt-get upgrade -y
 RUN apt-get install -y build-essential xorg libssl-dev libxrender-dev wget
 
 # Install dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends xvfb libfontconfig 
+RUN apt-get update && apt-get install -y --no-install-recommends xvfb libfontconfig libjpeg-turbo8 xfonts-75dpi fontconfig
 
-RUN wget --no-check-certificate https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
-RUN tar vxf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz 
-RUN cp wkhtmltox/bin/wk* /usr/local/bin/
-RUN rm -rf wkhtmltox
-RUN rm wkhtmltox-0.12.4_linux-generic-amd64.tar.xz 
+RUN wget --no-check-certificate https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.xenial_amd64.deb
+RUN dpkg -i wkhtmltox_0.12.5-1.xenial_amd64.deb
+RUN rm wkhtmltox_0.12.5-1.xenial_amd64.deb
 
 # Install dependencies for running web service
 RUN apt-get install -y python-pip
 RUN pip install werkzeug executor gunicorn
-RUN pip install gunicorn[eventlet] gunicorn[gevent] gunicorn[tornado] gunicorn[gthread] futures
+RUN pip install futures gunicorn[eventlet] && pip install gunicorn[gevent] && pip install gunicorn[tornado] && pip install gunicorn[gthread]
 
 ADD app.py /app.py
 
