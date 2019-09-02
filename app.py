@@ -7,6 +7,7 @@
 """
 import json
 import tempfile
+import subprocess
 
 from werkzeug.wsgi import wrap_file
 from werkzeug.wrappers import Request, Response
@@ -48,6 +49,14 @@ def application(request):
         if options:
             for option, value in options.items():
                 args.append('--%s' % option)
+                if option == 'header-html':
+                    subprocess.run(["wget", value, "/tmp/header.html"])
+                    value = "/tmp/header.html"
+
+                if option == 'footer-html':
+                    subprocess.run(["wget", value, "/tmp/footer.html"])
+                    value = "/tmp/footer.html"
+
                 if value:
                     args.append('"%s"' % value)
 
