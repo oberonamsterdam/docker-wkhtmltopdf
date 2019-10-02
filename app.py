@@ -8,7 +8,10 @@
 import json
 import tempfile
 import subprocess
+<<<<<<< Updated upstream
 import base64
+=======
+>>>>>>> Stashed changes
 
 from werkzeug.wsgi import wrap_file
 from werkzeug.wrappers import Request, Response

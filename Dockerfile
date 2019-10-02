@@ -19,9 +19,9 @@ RUN dpkg -i wkhtmltox_0.12.5-1.bionic_amd64.deb
 RUN rm wkhtmltox_0.12.5-1.bionic_amd64.deb
 
 # Install dependencies for running web service
-RUN apt-get install -y python3-pip
-RUN pip3 install werkzeug executor gunicorn
-RUN pip3 install futures gunicorn[eventlet] && pip3 install gunicorn[gevent] && pip3 install gunicorn[tornado] && pip3 install gunicorn[gthread]
+RUN apt-get install -y python-pip
+RUN pip install werkzeug executor gunicorn
+RUN pip install futures gunicorn[eventlet] && pip install gunicorn[gevent] && pip install gunicorn[tornado] && pip install gunicorn[gthread]
 
 ADD app.py /app.py
 
