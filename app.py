@@ -8,10 +8,6 @@
 import json
 import tempfile
 import subprocess
-<<<<<<< Updated upstream
-import base64
-=======
->>>>>>> Stashed changes
 
 from werkzeug.wsgi import wrap_file
 from werkzeug.wrappers import Request, Response
@@ -36,7 +32,7 @@ def application(request):
         if request_is_json:
             # If a JSON payload is there, all data is in the payload
             payload = json.loads(request.data)
-            source_file.write(base64.b64decode(payload['contents']))
+            source_file.write(payload['contents'].decode('base64'))
             options = payload.get('options', {})
         elif request.files:
             # First check if any files were uploaded
