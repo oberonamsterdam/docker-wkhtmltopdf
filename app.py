@@ -50,11 +50,11 @@ def application(request):
             for option, value in options.items():
                 args.append('--%s' % option)
                 if option == 'header-html':
-                    subprocess.run(["wget", value, "/tmp/header.html"])
+                    subprocess.call(["wget", value, "-O", "/tmp/header.html"])
                     value = "/tmp/header.html"
 
                 if option == 'footer-html':
-                    subprocess.run(["wget", value, "/tmp/footer.html"])
+                    subprocess.call(["wget", value, "-O", "/tmp/footer.html"])
                     value = "/tmp/footer.html"
 
                 if value:
