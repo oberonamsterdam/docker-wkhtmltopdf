@@ -1,5 +1,5 @@
 // 2019-10-02: Reverting back to python2 due to errors, no time for fixing these
-// 2019-09-02: Build using v0.51.1 from DEB-package, updated to Ubuntu 18.04, updated to python3 due to end-of-support python2
+// 2019-09-02: Build using v0.12.5-1 from DEB-package, updated to Ubuntu 18.04, updated to python3 due to end-of-support python2
 // 2018-03-08: Build using v0.12.4 from binary instead of 0.12.2 using apt-get
 // 2018-04-16: Moved to https://hub.docker.com/r/oberonamsterdam/wkhtmltopdf/, adding github repo for Dockerfile
 
@@ -9,7 +9,7 @@ Changes:
 
 * Using Ubuntu 18.04 instead of 14.04
 * Adding XVFB/libfontconfig to correctly render external fonts
-* Updated WKHTMLTOPDF to 0.15.1
+* Updated WKHTMLTOPDF to 0.12.5-1
 * Updated to Python3
 
 # Running the container
