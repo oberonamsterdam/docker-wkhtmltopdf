@@ -63,7 +63,8 @@ curl_setopt_array($ch, [
    CURLOPT_POSTFIELDS => $data,
 ]);
 
-$result = curl_exec($ch);```
+$result = curl_exec($ch);
+```
 
 $result will contain the binary PDF output.
 
